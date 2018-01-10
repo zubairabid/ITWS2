@@ -1,0 +1,1 @@
+cat /usr/share/dict/words | egrep -i "India|Africa"
