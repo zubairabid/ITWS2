@@ -1,0 +1,1 @@
+cat dict | egrep "^[^A-Z]{5}$"; cat dict | egrep "^[^A-Z]{10}$"
