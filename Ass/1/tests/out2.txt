@@ -1,0 +1,5 @@
+abc xyz mno
+apathy xyz abc
+abc xyz empathy
+abc apathy empathy apathy
+apathy apathy abc apathy
