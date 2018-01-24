@@ -1,0 +1,5 @@
+1. the grep gets all lines >= 35, using logic: '.' matches with any character, and first match is always the beginning of the line. No matching after that because greedy. Then it matches with the next 34, total 35 minimum characters, so every line with >= 35 characters is selected. Then we execute a substituition command with in/in fact globally
+in case we print everything including changes. In awk, if the line contained apathy at 3 convert to empathy, then print the line after. Grep, sed are cosmetic
+get substring 1-4. And 5-forever. substitute all characters in end with *s. print start and end.
+meh. easy. So we set the delimiter to be :, because the text in input files is separated by colons. Print user, line number, and the first arg
+TS is matched first. Then it's either - or blank. Now get .{2}, now get ..SS or ..55 or .SSS or .555, then match 0 or O

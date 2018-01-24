@@ -1,0 +1,5 @@
+1. egrep ".{35,}" inputs/input1.txt | sed 's/\ in\ /\ in\ fact\ /g'
+2. awk '{if($3=="apathy")$3="empathy";print $0}' inputs/input2.txt | grep "." | sed 's/ / /g'
+3. awk '{st=substr($1,1,4);en=substr($1,5);gsub(/./,"#",en);print st en}' inputs/input3.txt
+4. awk -F ":" '{print "USER#" NR " = " $1}' inputs/input4.txt
+5. egrep "TS((-.{2}-((..55)|(..SS)|(.555)|(.SSS))-(0|O))|( .{2} ((..55)|(..SS)|(.555)|(.SSS)) (0|O)))" inputs/input5.txt 
