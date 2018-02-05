@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Objects</h2>
+
+<p id="demo"></p>
+
+<script>
+/*function Person(first, last, age, eye) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eye;
+  this.nationality = "English";
+  }
+
+  var myFather = new Person("John", "Doe", 50, "blue");
+  var myMother = new Person("Sally", "Rally", 48, "green");
+
+  document.getElementById("demo").innerHTML =
+  "My father is " + myFather.nationality + ". My mother is " + myMother.nationality; */
+
+function Vehicle(speed, x) {
+	this.speed = speed;
+	this.x = x;
+}
+function Car(speed, x, model, colour) {
+	Vehicle.call(this, speed, x);
+	this.make = model;
+	this.colour = colour;
+}
+function Toy(cost) {
+	this.cost = cost;
+}
+
+
+function RCCar() {
+	Car.call(this, "Veyron", "Red");
+}
+
+function myMap(array, action) {
+	for (var i = 0; i < array.length; i++)
+		array[i] = action(array[i]);
+	return array;
+}
+
+function myFilter(array, action) {
+	reta = [];
+	for (var i = 0, j = 0; i < array.length; i++)
+		if(action(array[i]))
+			reta[j++] = array[i];
+	return reta;
+}
+
+function myReduce(array, action, accu) {
+	for (var i = 0; i < array.length; i++)
+		accu = action(accu, array[i]);
+	return accu;
+}
+
+
+
+
+</script>
+
+</body>
+</html>
+
