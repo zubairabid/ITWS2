@@ -4,4 +4,4 @@ function map(action, arr, val) {
   return arr;
 }
 
-map(((acted, actor)=>(actor+acted)), {1,2,3,4,5,6,7,8}, 12);
+console.log(map(((acted, actor)=>(actor+acted)), [1,2,3,4,5,6,7,8], 12));
