@@ -5,7 +5,7 @@ const utils = require('../index');
 
 describe('Higher Order functions', () => {
 
-    xit('myArrayFilter', done => {
+    it('myArrayFilter', done => {
 
         const arr = [1, 2, 3, 4, 5];
 
@@ -23,7 +23,7 @@ describe('Higher Order functions', () => {
 
     });
 
-    xit('myArrayReduce', done => {
+    it('myArrayReduce', done => {
 
         const arr = [1, 2, 3, 4, 5];
 
@@ -57,7 +57,7 @@ describe('Higher Order functions', () => {
         }
     };
 
-    xit('myTreeReduce', done => {
+    it('myTreeReduce', done => {
 
         const add = (a, b, c) => a + b + c;
 
@@ -69,7 +69,7 @@ describe('Higher Order functions', () => {
 
     });
 
-    xit('myTreeSize', done => {
+    it('myTreeSize', done => {
 
         const treeSize = utils.myTreeSize;
 

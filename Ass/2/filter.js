@@ -10,5 +10,7 @@ function filter(arr, callback) {
 
 	return retl;
 }
-
-console.log(filter([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], a=>a%2==0));
+var temp = filter([1, 2, 3, 4, 5], a=>a%2==1);
+var temp1 = [1, 3, 5];
+console.log(temp + " and " + temp1)
+console.log(temp == temp1)
