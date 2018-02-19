@@ -5,7 +5,7 @@ const utils = require('../index');
 
 describe('Promises', () => {
 
-    xit('carRace', done => {
+    it('carRace', done => {
 
         const ferrari = new Promise(resolve => {
             setTimeout(() => {

@@ -50,21 +50,21 @@ function myTreeSize(tree) {
 function myTreeTraversal(type) {
 	if(type == 'pre') {
 		var ret =  function(tree, l) {
-		// ADD CONDITION FOR LEFT/RIGHT TO EXIST
+			// ADD CONDITION FOR LEFT/RIGHT TO EXIST
 			if(l == undefined) {
 				var l = [];
 			}
 			if(tree.type == 'in') {
-//				console.log("Pushing vlr, "+ tree.value);
+				//				console.log("Pushing vlr, "+ tree.value);
 				l.push(tree.value);
-//				console.log(l);
+				//				console.log(l);
 				ret(tree.left, l);
 				ret(tree.right, l);
 			}
 			else {
-//				console.log("Pushing v, "+ tree.value);
+				//				console.log("Pushing v, "+ tree.value);
 				l.push(tree.value);
-//				console.log(l);
+				//				console.log(l);
 			}
 			return l;
 		}
@@ -76,16 +76,16 @@ function myTreeTraversal(type) {
 				var l = [];
 			}
 			if(tree.type == 'in') {
-//				console.log("Pushing lvr, "+ tree.value);
+				//				console.log("Pushing lvr, "+ tree.value);
 				ret(tree.left, l);
 				l.push(tree.value);
-//				console.log(l);
+				//				console.log(l);
 				ret(tree.right, l);
 			}
 			else {
-//				console.log("Pushing v, "+ tree.value);
+				//				console.log("Pushing v, "+ tree.value);
 				l.push(tree.value);
-//				console.log(l);
+				//				console.log(l);
 			}
 			return l;
 		}
@@ -97,58 +97,58 @@ function myTreeTraversal(type) {
 				var l = [];
 			}
 			if(tree.type == 'in') {
-//				console.log("Pushing lrv, "+ tree.value);
+				//				console.log("Pushing lrv, "+ tree.value);
 				ret(tree.left, l);
 				ret(tree.right, l);
 				l.push(tree.value);
-//				console.log(l);
+				//				console.log(l);
 			}
 			else {
-//				console.log("Pushing v, "+ tree.value);
+				//				console.log("Pushing v, "+ tree.value);
 				l.push(tree.value);
-//				console.log(l);
+				//				console.log(l);
 			}
 			return l;
 		}
 		return ret;
 	}/*
 
-	var lis = [];
-	var func;
+	    var lis = [];
+	    var func;
 
-	if(type == 'pre') {
-		func = function(tree) {
-			if(tree == undefined)
-				return;
-			lis.push(tree.value);
-			lis.push(func(tree.left));
-			lis.push(func(tree.right));
-			return lis;
-		}
-	}
+	    if(type == 'pre') {
+	    func = function(tree) {
+	    if(tree == undefined)
+	    return;
+	    lis.push(tree.value);
+	    lis.push(func(tree.left));
+	    lis.push(func(tree.right));
+	    return lis;
+	    }
+	    }
 
-	else if(type == 'in') {
-		func = function(tree) {
-			if(tree == undefined)
-				return lis;
-			lis.push(func(tree.left));
-			lis.push(tree.value);
-			lis.push(func(tree.right));
-			return lis;
-		}
-	}
+	    else if(type == 'in') {
+	    func = function(tree) {
+	    if(tree == undefined)
+	    return lis;
+	    lis.push(func(tree.left));
+	    lis.push(tree.value);
+	    lis.push(func(tree.right));
+	    return lis;
+	    }
+	    }
 
-	else if(type == 'post') {
-		func = function(tree) {
-			if(tree == undefined)
-				return lis;
-			lis.push(func(tree.left));
-			lis.push(func(tree.right));
-			lis.push(tree.value);
-			return lis;
-		}
-	}
-	return func;*/
+	    else if(type == 'post') {
+	    func = function(tree) {
+	    if(tree == undefined)
+	    return lis;
+	    lis.push(func(tree.left));
+	    lis.push(func(tree.right));
+	    lis.push(tree.value);
+	    return lis;
+	    }
+	    }
+	    return func;*/
 
 }
 
@@ -162,19 +162,60 @@ function hangman(phrase) {
 }
 
 function Person(name, age) {
+	this.name = name;
+	this.age = age;
+
+	this.about = function() {
+		return "My name is " + name + " and I\'m " + age + " yrs old.";
+	}
 
 }
 
 function Student(name, age, roll) {
+	Person.call(this, name, age);
+	this.roll = roll;
 
+	this.id = function() {
+		return "Student Id: "+this.roll;
+	};
 }
 
-const numberList = {
+//Student.prototype.__proto__ = Person;
 
+const numberList = {
+numbers: [],
+	 set add(num) {
+		 this.numbers.push(num);
+	 },
+	 get sum() {
+		 var sum = 0;
+		 for(var i = 0; i < this.numbers.length; i+=1) {
+			 sum += this.numbers[i];
+		 }
+		 return sum;
+	 },
+	 get average() {
+		 return (this.sum)/this.numbers.length;
+	 }
 };
 
 function carRace(cars, finish) {
+	//cars is the array of promises
+	var name = '';
+	var time = 99999999;
 
+	for(let i = 0; i < cars.length; i+=1) {
+		cars[i].then(function(resolve, reject) {
+			if(resolve.time < time) {
+				time = resolve.time;
+				name = resolve.name;
+			}
+	//		console.log("Promise for "+ i + " " + resolve.name + " resolved");
+	//		console.log("Min: " + name + " " + time);
+		});
+	}
+	//console.log("Min: " + name + " " + time);
+	Promise.all(cars).then(function() {finish(name + " won in " + time + " seconds!!!")});
 }
 
 module.exports = {
@@ -215,6 +256,46 @@ type: 'end',
 
 //console.log(myTreeReduce((a, b, c)=>a+b+c, x=>x)(tr));
 //console.log(myTreeSize(tr));
-console.log(myTreeTraversal('pre')(tr, []));
-console.log(myTreeTraversal('in')(tr, []));
-console.log(myTreeTraversal('post')(tr));
+//console.log(myTreeTraversal('pre')(tr, []));
+//console.log(myTreeTraversal('in')(tr, []));
+//console.log(myTreeTraversal('post')(tr));
+
+//const nl = numberList;
+//nl.add = 1;
+//console.log(nl.sum);
+//nl.add = 2;
+//console.log(nl.sum);
+//console.log(nl.average);
+//nl.add = 3;
+//console.log(nl.average===2);
+//const ferrari = new Promise(resolve => {
+//		setTimeout(() => {
+//				resolve({
+//name: 'Ferrari',
+//time: 10
+//});
+//				}, 10);
+//		});
+
+//const bugati = new Promise(resolve => {
+//		setTimeout(() => {
+//				resolve({
+//name: 'Bugatti',
+//time: 8
+//});
+//				}, 8);
+//		});
+//
+//carRace([ferrari, bugati], win=> {
+//	console.log(win);
+//});
+const person = new Person('John', 20);
+console.log(person.name);
+console.log(person.age);
+console.log(person.about());
+
+const student = new Student('John', 20, '20171076');
+console.log(student.name);
+console.log(student.age);
+console.log(student.about());
+console.log(student.id());

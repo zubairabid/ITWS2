@@ -5,7 +5,7 @@ const utils = require('../index');
 
 describe('objects', () => {
 
-    xit('getter & setter', done => {
+    it('getter & setter', done => {
 
         const numberList  = utils.numberList;
 
@@ -27,7 +27,7 @@ describe('objects', () => {
 
     });
 
-    xit('Person & Student', done => {
+    it('Person & Student', done => {
 
         const person = new utils.Person('John', 20);
         assert(person.name === 'John');
