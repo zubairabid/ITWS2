@@ -48,65 +48,107 @@ function myTreeSize(tree) {
 }
 
 function myTreeTraversal(type) {
-	/*var l = []
 	if(type == 'pre') {
-		var ret =  function(tree) {
+		var ret =  function(tree, l) {
 		// ADD CONDITION FOR LEFT/RIGHT TO EXIST
+			if(l == undefined) {
+				var l = [];
+			}
 			if(tree.type == 'in') {
-				console.log("Pushing vlr, "+ tree.value);
+//				console.log("Pushing vlr, "+ tree.value);
 				l.push(tree.value);
-				console.log(l);
-				l.push(ret(tree.left));
-				l.push(ret(tree.right));
+//				console.log(l);
+				ret(tree.left, l);
+				ret(tree.right, l);
 			}
 			else {
-				console.log("Pushing v, "+ tree.value);
+//				console.log("Pushing v, "+ tree.value);
 				l.push(tree.value);
-				console.log(l);
+//				console.log(l);
 			}
 			return l;
 		}
 		return ret;
 	}
 	else if(type == 'in') {
-		var ret = function(tree) {
+		var ret = function(tree, l) {
+			if(l == undefined) {
+				var l = [];
+			}
 			if(tree.type == 'in') {
-				console.log("Pushing lvr, "+ tree.value);
-				l.push(ret(tree.left));
+//				console.log("Pushing lvr, "+ tree.value);
+				ret(tree.left, l);
 				l.push(tree.value);
-				console.log(l);
-				l.push(ret(tree.right));
+//				console.log(l);
+				ret(tree.right, l);
 			}
 			else {
-				console.log("Pushing v, "+ tree.value);
+//				console.log("Pushing v, "+ tree.value);
 				l.push(tree.value);
-				console.log(l);
+//				console.log(l);
 			}
 			return l;
 		}
 		return ret;
 	}
 	else if(type == 'post') {
-		var ret = function(tree) {
+		var ret = function(tree, l) {
+			if(l == undefined) {
+				var l = [];
+			}
 			if(tree.type == 'in') {
-				console.log("Pushing lrv, "+ tree.value);
-				l.push(ret(tree.left));
-				l.push(ret(tree.right));
+//				console.log("Pushing lrv, "+ tree.value);
+				ret(tree.left, l);
+				ret(tree.right, l);
 				l.push(tree.value);
-				console.log(l);
+//				console.log(l);
 			}
 			else {
-				console.log("Pushing v, "+ tree.value);
+//				console.log("Pushing v, "+ tree.value);
 				l.push(tree.value);
-				console.log(l);
+//				console.log(l);
 			}
 			return l;
 		}
 		return ret;
-	}*/
+	}/*
 
-	
+	var lis = [];
+	var func;
 
+	if(type == 'pre') {
+		func = function(tree) {
+			if(tree == undefined)
+				return;
+			lis.push(tree.value);
+			lis.push(func(tree.left));
+			lis.push(func(tree.right));
+			return lis;
+		}
+	}
+
+	else if(type == 'in') {
+		func = function(tree) {
+			if(tree == undefined)
+				return lis;
+			lis.push(func(tree.left));
+			lis.push(tree.value);
+			lis.push(func(tree.right));
+			return lis;
+		}
+	}
+
+	else if(type == 'post') {
+		func = function(tree) {
+			if(tree == undefined)
+				return lis;
+			lis.push(func(tree.left));
+			lis.push(func(tree.right));
+			lis.push(tree.value);
+			return lis;
+		}
+	}
+	return func;*/
 
 }
 
@@ -173,6 +215,6 @@ type: 'end',
 
 //console.log(myTreeReduce((a, b, c)=>a+b+c, x=>x)(tr));
 //console.log(myTreeSize(tr));
-console.log(myTreeTraversal('pre')(tr));
-console.log(myTreeTraversal('in')(tr));
+console.log(myTreeTraversal('pre')(tr, []));
+console.log(myTreeTraversal('in')(tr, []));
 console.log(myTreeTraversal('post')(tr));

@@ -79,7 +79,7 @@ describe('Higher Order functions', () => {
 
     });
 
-    xit('myTreeTraversal', done => {
+    it('myTreeTraversal', done => {
 
         const treeTraversal = utils.myTreeTraversal;
 
