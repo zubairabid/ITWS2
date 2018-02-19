@@ -5,7 +5,7 @@ const utils = require('../index');
 
 describe('closures', () => {
 
-    xit('hangman', done => {
+    it('hangman', done => {
 
         let game = utils.hangman('work');
         assert(game('w') === 'w _ _ _');

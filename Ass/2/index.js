@@ -159,6 +159,49 @@ function hangman(phrase) {
 	const wrong = "Incorrect guess!!!";
 	const lost = "You\'ve lost!!! Correct phrase:";
 
+	var errata = 0;
+	var ans = '';
+	for(var i = 0; i < phrase.length - 1; i+=1) {
+		ans += '_ ';
+	}
+	ans+='_';
+
+	return function game(ch) {
+		if(errata >= 3) {
+			return gameOver;
+		}
+
+		if(phrase.indexOf(ch) > -1) {
+			var temp = '';
+			for(var i = 0; i < phrase.length; i+=1) {
+				if((phrase.charAt(i) != ch)) {
+					temp += ans.charAt(2*i) + ans.charAt(2*i+1);
+				}
+				else {
+					temp += ch + ' ';
+				}
+			}	
+			ans = temp;
+			if(ans.indexOf('_') == -1) {
+				errata = 4;
+				return won + " " + phrase;
+			}
+			else {
+				return ans;
+			}
+			// remove it
+		}
+		else {
+			errata += 1;
+			if(errata >= 3) {
+				return lost + " " + phrase;
+			}
+			else {
+				return wrong;
+			}
+		}
+	}
+
 }
 
 function Person(name, age) {
@@ -289,13 +332,29 @@ type: 'end',
 //carRace([ferrari, bugati], win=> {
 //	console.log(win);
 //});
-const person = new Person('John', 20);
-console.log(person.name);
-console.log(person.age);
-console.log(person.about());
+//const person = new Person('John', 20);
+//console.log(person.name);
+//console.log(person.age);
+//console.log(person.about());
+//const student = new Student('John', 20, '20171076');
+//console.log(student.name);
+//console.log(student.age);
+//console.log(student.about());
+//console.log(student.id());
 
-const student = new Student('John', 20, '20171076');
-console.log(student.name);
-console.log(student.age);
-console.log(student.about());
-console.log(student.id());
+let game = hangman('work');
+console.log(game('w'));
+console.log(game('h'));
+console.log(game('r'));
+console.log(game('o'));
+console.log(game('d'));
+console.log(game('k'));
+console.log(game('s'));
+
+game = hangman('tree');
+console.log(game('r'));
+console.log(game('a'));
+console.log(game('s'));
+console.log(game('i'));
+console.log(game('t'));
+
