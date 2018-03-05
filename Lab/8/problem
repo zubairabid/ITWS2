@@ -1,0 +1,8 @@
+GOOFYCOIN
+Entity: Goofy (makes coins, verifies transactions
+	Coins (dynamic if you want)
+	People (who spend these coins)
+
+Methods:
+	Add_Coin() - adds a coin
+	Transaction(coin_number, person P) - pay a coin to person P (can only be made by the previous owner)
