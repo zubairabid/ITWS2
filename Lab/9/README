@@ -1,0 +1,6 @@
+20171076
+
+Input format: Just run it, no input
+gets all articles from the first page. 
+Getting other pages is trivial, just keep opening url + #n, where n is iterated through a loop until responses returned are the same or HTTP errors.
+
