@@ -1,6 +1,7 @@
 20171076
 
-Input format: Just run it, no input
-gets all articles from the first page. 
-Getting other pages is trivial, just keep opening url + #n, where n is iterated through a loop until responses returned are the same or HTTP errors.
+GoofyCoin:
+Input format is specified by the program (menu-driven). Not accounting for IOExceptions.
 
+Scraper:
+scans the first page of the IIIT search on IndianExpress. No input required. Getting other pages is trivial; just run a loop and request the url+pageno, and stop when 404 is encountered.
