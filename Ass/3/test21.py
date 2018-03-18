@@ -7,10 +7,22 @@ for i in range(5):
 
 	books = soup.find_all('div', {'class':'zg_itemWrapper'})
 	for book in books:
-		name = book.a.find('div', {'class':'p13n-sc-truncate'}).string
-		rating =  book.find('span', {'class':'a-icon-alt'}).string
-		price = book.find_all('span', {'class':'p13n-sc-price'})[0].text
-		author = book.find('div', {'class':'a-row'}).string
+		name = book.a.find('div', {'class':'p13n-sc-truncate'})
+		if (name != None):
+			name = name.string
+
+		rating =  book.find('span', {'class':'a-icon-alt'})
+		if (rating != None):
+			rating = rating.string
+
+		price = book.find_all('span', {'class':'p13n-sc-price'})[0]
+		if (price != None):
+			price = price.text
+
+		author = book.find('div', {'class':'a-row'})
+		if (author != None):
+			author = author.string
+
 		t = book.find_all('a', {'class':'a-size-small'})
 		if(len(t) == 0):
 			nratings = None
@@ -18,6 +30,11 @@ for i in range(5):
 		else:
 			nratings = t[len(t)-1].string
 
+		# remove commas from nratings first
+		if(nratings != None):
+			nratings = ''.join(nratings.split(','))
+
+		#
 		try:
 			int(nratings.strip())
 		except:
