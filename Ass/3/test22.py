@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import csv
 
 # base = base url for each book
 def pagecrawl(url, base):
@@ -49,17 +50,21 @@ def pagecrawl(url, base):
         if(price == None):
             price = "Not available"
 
-        print("URL: " + url)
-        print("Name: " + name)
-        print("Author: " + author)
-        print("NOR: " + nor)
-        print("Rating: " + rating)
-        print("Price: " + price)
-        print("\n"*2)
+        row = [name, url, author, price, nor, rating]
+
+        with open('com.csv', 'a') as file:
+            writer = csv.writer(file, delimiter=';')
+            writer.writerow(row)
 
 
 base = 'https://www.amazon.com'
 urlb = base + '/best-sellers-books-Amazon/zgbs/books/'
+
+hdr = ['Name', 'URL', 'Author', 'Price', 'Number of Ratings', 'Average Rating']
+with open('com.csv', 'w') as file:
+    writer = csv.writer(file, delimiter=';')
+    writer.writerow(hdr)
+
 for i in range(5):
     url = urlb + 'ref=zg_bs_pg_{}?_encoding=UTF8&pg={}'.format((i + 1), (i + 1))
     pagecrawl(url, base)
