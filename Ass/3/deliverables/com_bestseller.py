@@ -32,7 +32,7 @@ def pagecrawl(url, base):
 
         if(reviewSet != None):
             rating = reviewSet.span.text.strip()
-            nor = ''.join(reviewSet.find_all('a')[1].text.strip().split(','))
+            nor = reviewSet.find_all('a')[1].text.strip()
         else:
             rating = None
             nor = None

@@ -5,18 +5,17 @@ class Ship:
         self.x = x
         self.y = y
 
-    def move(self, direction, screen):
+    def move(self, dir, sess):
 
-        temp = screen[self.x][self.y]
-        screen[self.x][self.y] = None
+        temp = sess.screen[self.x][self.y]
+        sess.screen[self.x][self.y] = None
 
-        if(direction == 'left'):
+        if(dir == 'left'):
             if(self.y != 0):
                 self.y -= 1
-        elif(direction == 'right'):
+        if(dir == 'right'):
             if(self.y != 7):
                 self.y += 1
 
-        screen[self.x][self.y] = temp
-
+        sess.screen[self.x][self.y] = temp
         return self.x, self.y
