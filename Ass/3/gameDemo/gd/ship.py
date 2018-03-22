@@ -1,7 +1,9 @@
+import globalset as gs
+
 class Ship:
 
     def __init__(self, x, y):
-        self.txt = 'W'
+        self.txt = gs.ship
         self.x = x
         self.y = y
 

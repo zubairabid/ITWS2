@@ -23,11 +23,12 @@ class Control:
                 if(self.sess.screen[i][j] != None):
                     self.scr.addstr(gs.ROW_OF + i * gs.ROW_H, gs.COL_OF + j * gs.COL_W, str(self.sess.screen[i][j].txt))
                 else:
-                    self.scr.addstr(gs.ROW_OF + i * gs.ROW_H, gs.COL_OF + j * gs.COL_W, ".")
+                    self.scr.addstr(gs.ROW_OF + i * gs.ROW_H, gs.COL_OF + j * gs.COL_W, gs.none)
 
         # Drawing score
-        self.scr.addstr(18, 2, ("Player Score : " + str(self.sess.score)))
-
+        self.scr.addstr(9 * gs.ROW_H, gs.ROW_OF, ("Player Score : " + str(self.sess.score)))
+        # Time display too
+        self.scr.addstr(10 * gs.ROW_H, gs.ROW_OF, ("Time spent: {}".format(gs.tm)))
     def keyIn(self, c):
         if(c == ord('a') or c == ord('A')):
             self.move("left")

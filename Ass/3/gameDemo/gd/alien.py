@@ -3,7 +3,7 @@ import globalset as gs
 class Alien:
 
     def __init__(self, x, y):
-        self.txt = 'y'
+        self.txt = gs.alien
 
         self.x = x
         self.y = y

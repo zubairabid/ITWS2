@@ -11,7 +11,7 @@ def main(stdscr):
 
     stdscr.nodelay(True)
     curses.curs_set(0)
-    stdscr.resize(24, 80)
+    stdscr.resize(gs.WIN_H, gs.WIN_W)
     stdscr.clear()
     stdscr.border(0, 0, 0, 0, 0, 0, 0, 0)
 
@@ -36,7 +36,7 @@ def main(stdscr):
         s.keyIn(c)
 
         stdscr.border(0, 0, 0, 0, 0, 0, 0, 0)
-        stdscr.resize(24, 80)
+        stdscr.resize(gs.WIN_H, gs.WIN_W)
         time.sleep(gs.CLOCK_CYCLE)
 
 wrapper(main)

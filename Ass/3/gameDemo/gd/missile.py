@@ -5,7 +5,7 @@ from alien import Alien
 class Missile(Ship):
 
     def __init__(self, pship):
-        self.txt = 'i'
+        self.txt = gs.missile
         self.speed = 1
         self.ck = 0
 
