@@ -1,16 +1,16 @@
-CLOCK_CYCLE = 0.1
-SPAWN_TIME = 10
-ALIEN_LIFE = 8
+CLOCK_CYCLE = 0.01
+SPAWN_TIME = 2
+ALIEN_LIFE = 2
 EXTENSION = 5
-STDSPEED = 1
-BSPEED = 2
+STDSPEED = 10
+BSPEED = 20
 
-ROW_H = 2
-ROW_OF = 2
-COL_W = 4
-COL_OF = 2
-WIN_H = 24
-WIN_W = 80
+ROW_H = 2*3
+ROW_OF = 2*3
+COL_W = 4*3
+COL_OF = 2*3
+WIN_H = 24*3
+WIN_W = 80*3
 
 tm = 0
 
@@ -19,7 +19,7 @@ missile = 'i'
 timeb = 'l'
 ship = 'W'
 alien = 'Y'
-alien_shot = 'V'
+alien_shot = 'P'
 
 # Instance specific variables
 class GSet:
