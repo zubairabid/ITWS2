@@ -28,17 +28,17 @@ class Control:
             for j in range(gs.NCOLS):
                 row = gs.ROW_OF + i * gs.ROW_H
                 col = gs.COL_OF + j * gs.COL_W
-                if(self.sess.screen[i][j] is not None):
+                if(self.sess.screen[i][j] != None):
                     self.scr.addstr(row, col, str(self.sess.screen[i][j].txt))
                 else:
                     self.scr.addstr(row, col, gs.none)
 
         # Drawing score
         score = "Player Score : " + str(self.sess.score)
-        self.scr.addstr((gs.NROWS + 2) * gs.ROW_H, gs.ROW_OF, score)
+        self.scr.addstr((gs.NROWS + 1) * gs.ROW_H, gs.ROW_OF, score)
         # Time display too
         t = "Time spent: {}".format(gs.tm)
-        self.scr.addstr((gs.NROWS + 3) * gs.ROW_H, gs.ROW_OF, t)
+        self.scr.addstr((gs.NROWS + 2) * gs.ROW_H, gs.ROW_OF, t)
 
         # KEY Draws
         krow = gs.ROW_OF
@@ -117,7 +117,7 @@ class Control:
 
         x = randint(0, 1)
         y = randint(0, gs.NROWS - 1)
-        while(self.sess.screen[x][y] is not None):
+        while(self.sess.screen[x][y] != None):
             x = randint(0, 1)
             y = randint(0, 7)
 

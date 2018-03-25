@@ -23,16 +23,16 @@ def pagecrawl(url, base):
         reviewSet = book.find('div', {'class': 'a-icon-row'})
 
         # derived results
-        if(url != None):
+        if(url is not None):
             url = ''.join((base + url).split(' '))
-        if(name != None):
+        if(name is not None):
             name = name.text.strip()
-        if(author != None):
+        if(author is not None):
             author = author.text.strip()
-        if(price != None):
+        if(price is not None):
             price = 'INR ' + price.text.strip()
 
-        if(reviewSet != None):
+        if(reviewSet is not None):
             rating = reviewSet.span.text.strip()
             nor = reviewSet.find_all('a')[1].text.strip()
         else:
@@ -40,17 +40,17 @@ def pagecrawl(url, base):
             nor = None
 
         # Conversion to no results
-        if(url == None):
+        if(url is None):
             url = 'Not available'
-        if(name == None):
+        if(name is None):
             name = 'Not available'
-        if(nor == None):
+        if(nor is None):
             nor = 'Not available'
-        if(rating == None):
+        if(rating is None):
             rating = 'Not available'
-        if(author == None):
+        if(author is None):
             author = 'Not available'
-        if(price == None):
+        if(price is None):
             price = 'Not available'
 
         row = [name, url, author, price, nor, rating]
