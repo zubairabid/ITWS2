@@ -10,12 +10,12 @@ BSPEED = 2
 NROWS = 8
 NCOLS = 8
 
-ROW_H = 2*2
-ROW_OF = 2*2
-COL_W = 4*2
-COL_OF = 4*2
-WIN_H = (NROWS + 1) * ROW_H + 2 * COL_OF
-WIN_W = (NCOLS + 8) * COL_W + 2 * ROW_OF
+ROW_H = 3
+ROW_OF = 1 * ROW_H
+COL_W = 6
+COL_OF = 1 * COL_W
+WIN_H = (NROWS + 4) * ROW_H + 2 * ROW_OF
+WIN_W = (NCOLS + 20) * COL_W + 2 * COL_OF
 
 # universal timer
 tm = 0

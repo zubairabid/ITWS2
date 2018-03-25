@@ -40,6 +40,10 @@ class Control:
         t = "Time spent: {}".format(gs.tm)
         self.scr.addstr((gs.NROWS + 3) * gs.ROW_H, gs.ROW_OF, t)
 
+        # Warnings:
+        overlapw = "WARNING: Missiles crossing each other are both eliminated"
+        self.scr.addstr((gs.NROWS + 4) * gs.ROW_H, gs.ROW_OF, overlapw)
+
         # KEY Draws
         krow = gs.ROW_OF
         kcol = (gs.NCOLS + 3) * gs.COL_W
