@@ -12,22 +12,22 @@ class Control:
         self.sess = gs.GSet();
         self.scr = stdscr
         # setup initial ship space
-        self.x = 7
-        self.y = 4
-        self.sess.screen[7][4] = Ship(7, 4)
+        self.x = gs.NROWS - 1
+        self.y = gs.NCOLS // 2;
+        self.sess.screen[self.x][self.y] = Ship(self.x, self.y)
 
     def draw(self):
         # Drawing the board
-        for i in range(8):
-            for j in range(8):
+        for i in range(gs.NROWS):
+            for j in range(gs.NCOLS):
                 if(self.sess.screen[i][j] != None):
                     self.scr.addstr(gs.ROW_OF + i * gs.ROW_H, gs.COL_OF + j * gs.COL_W, str(self.sess.screen[i][j].txt))
                 else:
                     self.scr.addstr(gs.ROW_OF + i * gs.ROW_H, gs.COL_OF + j * gs.COL_W, gs.none)
 
         # Drawing score
-        self.scr.addstr(9 * gs.ROW_H, gs.ROW_OF, ("Player Score : " + str(self.sess.score)))
-        self.scr.addstr(10 * gs.ROW_H, gs.ROW_OF, ("Time spent: {}".format(gs.tm)))
+        self.scr.addstr((gs.NROWS + 1) * gs.ROW_H, gs.ROW_OF, ("Player Score : " + str(self.sess.score)))
+        self.scr.addstr((gs.NROWS + 2) * gs.ROW_H, gs.ROW_OF, ("Time spent: {}".format(gs.tm)))
         # Time display too
     def keyIn(self, c):
         if(c == ord('a') or c == ord('A')):
@@ -79,7 +79,7 @@ class Control:
 
     def genAlien(self):
         x = randint(0, 1)
-        y = randint(0, 7)
+        y = randint(0, gs.NROWS - 1)
         while(self.sess.screen[x][y] != None):
             x = randint(0, 1)
             y = randint(0, 7)

@@ -5,12 +5,15 @@ EXTENSION = 5
 STDSPEED = 1
 BSPEED = 2
 
-ROW_H = 2
-ROW_OF = 2
-COL_W = 4
-COL_OF = 2
-WIN_H = 24
-WIN_W = 80
+ROW_H = 2*2
+ROW_OF = 2*2
+COL_W = 4*2
+COL_OF = 2*2
+WIN_H = 24*2
+WIN_W = 80*2
+
+NROWS = 8
+NCOLS = 8
 
 tm = 0
 

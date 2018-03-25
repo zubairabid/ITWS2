@@ -4,6 +4,8 @@ import csv
 import os
 
 # base = base url for each book
+
+
 def pagecrawl(url, base):
     page = requests.get(url)
     soup = BeautifulSoup(page.text, 'html.parser')
@@ -11,14 +13,14 @@ def pagecrawl(url, base):
     if(page.status_code == 404):
         return
 
-    scope = soup.find_all('div', {'class':'zg_itemWrapper'})
+    scope = soup.find_all('div', {'class': 'zg_itemWrapper'})
     for book in scope:
         # base forms
         url = book.a.get('href')
-        name = book.a.find('div', {'class':'p13n-sc-truncate'})
-        author = book.find('div', {'class':'a-row'})
-        price = book.find('span', {'class':'p13n-sc-price'})
-        reviewSet = book.find('div', {'class':'a-icon-row'})
+        name = book.a.find('div', {'class': 'p13n-sc-truncate'})
+        author = book.find('div', {'class': 'a-row'})
+        price = book.find('span', {'class': 'p13n-sc-price'})
+        reviewSet = book.find('div', {'class': 'a-icon-row'})
 
         # derived results
         if(url != None):
