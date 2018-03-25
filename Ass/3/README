@@ -1,0 +1,5 @@
+ENVIRONMENT: The Assignment was done in Python 3. It requires the bs4, requests libraries.
+
+QUESTION 1: Run the game using "python3 gmain.py". The program was done with python curses.
+
+QUESTION 2: According to specifications
