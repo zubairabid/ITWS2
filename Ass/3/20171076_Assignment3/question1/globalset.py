@@ -14,8 +14,8 @@ ROW_H = 3
 ROW_OF = 1 * ROW_H
 COL_W = 6
 COL_OF = 1 * COL_W
-WIN_H = (NROWS + 4) * ROW_H + 2 * ROW_OF
-WIN_W = (NCOLS + 20) * COL_W + 2 * COL_OF
+WIN_H = NROWS * ROW_H + 2 * ROW_OF + 4 * ROW_H
+WIN_W = NCOLS * COL_W + 2 * COL_OF + 2 * COL_W + 40
 
 # universal timer
 tm = 0
