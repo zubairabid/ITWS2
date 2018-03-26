@@ -9,13 +9,13 @@ from control import Control
 def main(stdscr):
     '''Main game flow starts here'''
 
+    gs.resize()
     s = Control(stdscr)
 
     stdscr.nodelay(True)
     curses.curs_set(0)
     stdscr.resize(gs.WIN_H, gs.WIN_W)
     stdscr.clear()
-    stdscr.border(0, 0, 0, 0, 0, 0, 0, 0)
 
     while(True):
         c = stdscr.getch()
@@ -37,8 +37,15 @@ def main(stdscr):
             return
         s.keyIn(c)
 
-        stdscr.border(0, 0, 0, 0, 0, 0, 0, 0)
-        stdscr.resize(gs.WIN_H, gs.WIN_W)
+        # border drawing
+        stdscr.addstr(0, 0, '+')
+        stdscr.addstr(0, gs.WIN_W-2, '+')
+        stdscr.addstr(gs.WIN_H-1, 0, '+')
+        stdscr.addstr(gs.WIN_H-1, gs.WIN_W-2, '+')
+        stdscr.hline(0, 1, '-', gs.WIN_W-3)
+        stdscr.hline(gs.WIN_H-1, 1, '-', gs.WIN_W-3)
+        stdscr.vline(1, 0, '|', gs.WIN_H-2)
+        stdscr.vline(1, gs.WIN_W-2, '|', gs.WIN_H-2)
         time.sleep(gs.CLOCK_CYCLE)
 
 

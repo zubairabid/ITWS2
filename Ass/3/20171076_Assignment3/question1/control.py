@@ -37,12 +37,22 @@ class Control:
         score = "Player Score : " + str(self.sess.score)
         self.scr.addstr((gs.NROWS + 2) * gs.ROW_H, gs.ROW_OF, score)
         # Time display too
-        t = "Time spent: {}".format(gs.tm)
+        t = "Time spent: " + "%.3f" % (gs.tm)
         self.scr.addstr((gs.NROWS + 3) * gs.ROW_H, gs.ROW_OF, t)
+        # Speed Display
+        spd = "Ballistic missile Speed : {}".format(gs.STDSPEED)
+        spd2 = "Timershot Missile Speed : {}".format(gs.BSPEED)
+        self.scr.addstr((gs.NROWS + 4) * gs.ROW_H, gs.ROW_OF, spd)
+        self.scr.addstr((gs.NROWS + 5) * gs.ROW_H, gs.ROW_OF, spd2)
+        # Life display
+        lyf = "Alien lifetime: {}".format(gs.ALIEN_LIFE)
+        pwn = "Respawn time: {}".format(gs.SPAWN_TIME)
+        self.scr.addstr((gs.NROWS + 6) * gs.ROW_H, gs.ROW_OF, lyf)
+        self.scr.addstr((gs.NROWS + 7) * gs.ROW_H, gs.ROW_OF, pwn)
 
         # Warnings:
         overlapw = "WARNING: Missiles crossing each other are both eliminated"
-        self.scr.addstr((gs.NROWS + 4) * gs.ROW_H, gs.ROW_OF, overlapw)
+        self.scr.addstr((gs.NROWS + 9) * gs.ROW_H, gs.ROW_OF, overlapw)
 
         # KEY Draws
         krow = gs.ROW_OF
@@ -68,6 +78,12 @@ class Control:
         self.scr.addstr(krow, kcol, "<spacebar> to shoot Ballistic missile")
         krow += gs.ROW_H
         self.scr.addstr(krow, kcol, "S to shoot Timershot missile")
+        krow += gs.ROW_H
+        sch = "Press P to ++ missile speed and -- life. M vice versa"
+        self.scr.addstr(krow, kcol, sch)
+        krow += gs.ROW_H
+        rsz = "Size :1> Small Screen, 2> Medium Screen, 3> Large Screen"
+        self.scr.addstr(krow, kcol, rsz)
 
     def keyIn(self, c):
         '''Given a key input, redirects instuction to function'''
@@ -78,8 +94,51 @@ class Control:
             self.move("right")
         if(c == ord('s') or c == ord('S')):
             self.move("2")
+        if(c == ord('p') or c == ord('P')):
+            self.modGame("speedUp")
+        if(c == ord('m') or c == ord('M')):
+            self.modGame("speedDown")
+        if(c == ord('1')):
+            self.modGame('1')
+        if(c == ord('2')):
+            self.modGame('2')
+        if(c == ord('3')):
+            self.modGame('3')
         if(c == ord(' ')):
             self.move("1")
+
+    def modGame(self, instruction):
+        if(instruction == 'speedUp'):
+            if(gs.ALIEN_LIFE == 1):
+                return
+            gs.STDSPEED += 1
+            gs.BSPEED += 1
+            gs.ALIEN_LIFE -= 1
+            gs.SPAWN_TIME -= 1
+
+        if(instruction == 'speedDown'):
+            if(gs.STDSPEED == 1):
+                return
+            gs.STDSPEED -= 1
+            gs.BSPEED -= 1
+            gs.ALIEN_LIFE += 1
+            gs.SPAWN_TIME += 1
+
+        if(instruction == '1'):
+            gs.ROW_H = 1
+            gs.COL_W = 2
+            gs.resize()
+            self.scr.clear()
+
+        if(instruction == '2'):
+            gs.ROW_H = 2
+            gs.COL_W = 4
+            gs.resize()
+
+        if(instruction == '3'):
+            gs.ROW_H = 3
+            gs.COL_W = 6
+            gs.resize()
 
     def move(self, instruction):
         '''given an instruction type, moves ship or missile as needed'''
