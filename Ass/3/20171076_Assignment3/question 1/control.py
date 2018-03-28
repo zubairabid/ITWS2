@@ -112,7 +112,7 @@ class Control:
             if(gs.ALIEN_LIFE == 1):
                 return
             gs.STDSPEED += 1
-            gs.BSPEED += 1
+            gs.BSPEED = 2 * gs.STDSPEED
             gs.ALIEN_LIFE -= 1
             gs.SPAWN_TIME -= 1
 
@@ -120,7 +120,7 @@ class Control:
             if(gs.STDSPEED == 1):
                 return
             gs.STDSPEED -= 1
-            gs.BSPEED -= 1
+            gs.BSPEED  = 2 * gs.STDSPEED
             gs.ALIEN_LIFE += 1
             gs.SPAWN_TIME += 1
 
