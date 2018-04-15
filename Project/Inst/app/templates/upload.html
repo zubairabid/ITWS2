@@ -1,0 +1,22 @@
+{% extends 'base.html' %}}
+
+{% block content %}
+  <form action="" method="post" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <p>
+      {{ form.photo.label }}<br>
+      {{ form.photo }}
+      {% for error in form.photo.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+    </p>
+    <p>
+        {{ form.caption.label }}<br>
+        {{ form.caption(cols=32, rows=4) }}<br>
+        {% for error in form.caption.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>{{ form.submit() }}</p>
+  </form>
+{% endblock %}

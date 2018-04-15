@@ -1,0 +1,9 @@
+
+<ul class="pagination">
+  {% if prev_url %}
+  <li class="active"><a href="{{ prev_url }}">Newer posts</a></li>
+  {% endif %}
+  {% if next_url %}
+  <li class="waves-effect"><a href="{{ next_url }}">Older posts</a></li>
+  {% endif %}
+</ul>

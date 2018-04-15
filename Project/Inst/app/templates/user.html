@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <br>
+
+  <div class="row">
+    <div class="col s12 m5">
+      <img class="circle" src="{{ user.avatar(200) }}">
+    </div>
+    <div class="col s12 m7">
+      <h1> {{ user.username }} </h1>
+      {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+
+      <div class="row">
+        <div class="col s3">
+          <a class="waves-effect waves-light btn red darken-4">{{ user.followers.count() }}</a> Followers
+        </div>
+        <div class="col s3">
+          <a class="waves-effect waves-light btn red darken-4">{{ user.followed.count() }}</a> Followed
+        </div>
+      </div>
+
+      {% if user == current_user %}
+      <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
+      {% elif not current_user.is_following(user) %}
+      <p><a href="{{ url_for('follow', username=user.username) }}">Follow</a></p>
+      {% else %}
+      <p><a href="{{ url_for('unfollow', username=user.username) }}">Unfollow</a></p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row">
+    {% for post in posts %}
+      {% include '_post.html' %}
+    {% endfor %}
+  </div>
+
+  {% include '_pagination.html' %}
+
+{% endblock %}

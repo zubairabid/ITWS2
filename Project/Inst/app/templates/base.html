@@ -1,0 +1,70 @@
+<html>
+<head>
+	{% if title %}
+	<title>{{ title }} - Microblog</title>
+	{% else %}
+	<title>Welcome to Microblog</title>
+	{% endif %}
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" src="{{ url_for('static', filename='styles/des.css') }}">
+</head>
+
+<body>
+  <div class="navbar-fixed">
+    <nav class="deep-purple darken-3">
+      <div class="nav-wrapper">
+
+        <a href="#!" class="brand-logo">IClone</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+        <ul class="right hide-on-med-and-down">
+          <li><a href = "{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('explore') }}">Explore</a></li>
+          {% if current_user.is_anonymous %}
+          <li>  <a href="{{ url_for('login') }}">Login</a></li>
+          {% else %}
+          <li><a href="{{ url_for('upload') }}">Upload</a></li>
+          <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+          <li><a href="{{ url_for('logout') }}">Logout</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+
+
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href = "{{ url_for('index') }}">Home</a></li>
+      <li><a href="{{ url_for('explore') }}">Explore</a></li>
+      {% if current_user.is_anonymous %}
+      <li>  <a href="{{ url_for('login') }}">Login</a></li>
+      {% else %}
+      <li><a href="{{ url_for('upload') }}">Upload</a></li>
+      <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+      <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      {% endif %}
+    </ul>
+
+  </div>
+
+
+  <div class="container">
+    <!-- Page Content goes here -->
+    {% block content %}{% endblock %}
+  </div>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script type="text/javascript" href="{{url_for('static', filename='scripts/mat.js')}}"></script>
+  <!-- <script>
+    var elem = document.querySelector('.sidenav');
+    var instance = M.sidenav.init(elem, options);
+  </script> -->
+</body>
+</html>

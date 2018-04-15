@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  Are you sure?
+  <form action="" method="post">
+    {{ form.hidden_tag() }}
+
+    {{ form.yes() }}
+  </form>
+{% endblock %}
